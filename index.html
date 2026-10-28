@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Checklist Fase 1 · Centinela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+color-scheme:dark;
+--bg:#0D0B14;--bg-top:#241A42;--surface:#16112A;--surface-2:#1C1535;--ink:#F4F1FF;--muted:#B7AED6;--line:#28213A;--line-2:#372D52;
+--brand:#784AF7;--violet:#A78BFF;--violet-soft:rgba(120,74,247,0.14);--chip:#C9B8FF;--white:#FFFFFF;--on-sun:#1D1530;
+--sun:#F2C230;--sun-soft:rgba(242,194,48,0.12);--sun-ink:#FFE08A;
+--ok:#6FD39E;--ok-soft:rgba(111,211,158,0.14);--warn:#FFC36B;--warn-soft:rgba(255,195,107,0.12);
+--display:"Inter","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono","Courier New",ui-monospace,monospace;
+--gutter:clamp(16px,4vw,32px);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:radial-gradient(ellipse 90% 520px at 85% 0%,rgba(120,74,247,0.30),rgba(120,74,247,0) 70%),linear-gradient(180deg,var(--bg-top) 0px,#150F28 520px,var(--bg) 1100px) no-repeat,var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-block:0 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){.meter i{transition:none}}
+h1,h2,h3{line-height:1.12;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:900;letter-spacing:-.05em;line-height:1.04}
+h1 em{font-style:normal;color:var(--violet)}
+h2{font-size:1.3rem;font-weight:800;letter-spacing:-.03em}
+h3{font-size:1.02rem;font-weight:700;letter-spacing:-.02em}
+p{margin:0}
+a{color:var(--violet)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);font-weight:500;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--brand);flex:none}
+.hero{padding:30px 0 22px;display:flex;flex-direction:column;gap:14px}
+.pair{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px}
+.bars{display:flex;align-items:center;gap:3px;height:24px}
+.bars i{display:block;width:5px;border-radius:99px;background:var(--white)}
+.bars i.v{background:var(--brand)}
+.word{font-size:1.25rem;font-weight:800;letter-spacing:-.05em;line-height:1}
+.word span{font-weight:600;color:var(--violet)}
+.pair .x{color:var(--muted);font-family:var(--mono)}
+.pair .p{background:var(--sun);color:var(--on-sun);padding:4px 12px;border-radius:999px;font-weight:700;font-size:.92rem}
+.lead{color:var(--muted);max-width:66ch}
+.lead b{color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--mono);font-size:.72rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--chip)}
+.howto{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.howto ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:.93rem}
+.howto b{color:var(--ink)}
+/* barra fija de progreso */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0}
+.sync.err{color:var(--warn)}
+.flist .ask{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--warn);white-space:nowrap}
+.flist .ask button{font:600 .76rem var(--display);padding:4px 10px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--chip);cursor:pointer}
+.flist .ask button.yes{border-color:var(--warn);color:var(--warn)}
+.flist .loc{font-family:var(--mono);font-size:.62rem;color:var(--muted);white-space:nowrap}
+@media (max-width:480px){.flist li{flex-wrap:wrap}}
+.bar-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.meter{flex:1;min-width:140px;height:10px;border-radius:99px;background:var(--line-2);overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .3s}
+.meter .done{background:var(--ok)} .meter .part{background:var(--sun)}
+.count{font-family:var(--mono);font-size:.8rem;color:var(--sun-ink);white-space:nowrap}
+.sync{font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap}
+.sync.on{color:var(--ok)}
+/* grupos y preguntas */
+.group{padding-top:30px;display:flex;flex-direction:column;gap:12px}
+.group-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.group-head span{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0;scroll-margin-top:70px}
+.q.st-respondida{border-color:rgba(111,211,158,.45)}
+.q.st-parcial{border-color:rgba(255,195,107,.45)}
+.q-top{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start}
+.num{font-family:var(--mono);font-weight:600;font-size:.85rem;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--violet-soft);color:var(--violet)}
+.q.st-respondida .num{background:var(--ok-soft);color:var(--ok)}
+.q-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.q-text p{font-size:.92rem;color:var(--muted)}
+.kind{align-self:flex-start;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--line-2);color:var(--chip)}
+.kind.doc{border-color:rgba(242,194,48,.4);color:var(--sun-ink)}
+label.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+textarea{width:100%;min-height:96px;resize:vertical;font:inherit;font-size:16px;line-height:1.5;color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:12px}
+textarea::placeholder{color:#7F77A0}
+textarea:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(120,74,247,.3)}
+.q-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.status{display:flex;gap:6px;flex-wrap:wrap}
+.status button{font:600 .78rem var(--display);padding:8px 12px;min-height:36px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--chip);cursor:pointer}
+.status button[aria-pressed="true"][data-v="pendiente"]{background:var(--line-2);color:var(--ink);border-color:var(--line-2)}
+.status button[aria-pressed="true"][data-v="parcial"]{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}
+.status button[aria-pressed="true"][data-v="respondida"]{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.saved{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+/* acciones */
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:700 .92rem var(--display);border:0;border-radius:999px;padding:12px 18px;min-height:44px;cursor:pointer;background:var(--brand);color:var(--white);text-decoration:none;display:inline-flex;align-items:center}
+.btn.ghost{background:var(--violet-soft);color:var(--chip);border:1px solid var(--line-2)}
+.files{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line-2);padding-top:10px}
+.files-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.up{font:600 .8rem var(--display);padding:8px 12px;min-height:36px;border-radius:999px;border:1px dashed var(--sun);background:var(--sun-soft);color:var(--sun-ink);cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.up[hidden]{display:none}
+.up input{position:absolute;width:1px;height:1px;opacity:0}
+.up.drive{border-color:var(--line-2);background:transparent;color:var(--chip)}
+.flist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.flist li{display:flex;align-items:center;gap:8px;font-size:.86rem;background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:8px 10px;min-width:0}
+.flist a{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.flist .x{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:2px 6px}
+.fmsg{font-size:.78rem;color:var(--warn)}
+.flist small{color:var(--muted);font-family:var(--mono);font-size:.7rem;white-space:nowrap}
+.flist .on{font-family:var(--mono);font-size:.62rem;color:var(--ok);white-space:nowrap}
+.prop{background:linear-gradient(160deg,rgba(120,74,247,0.22),rgba(120,74,247,0.04));border:2px solid var(--brand);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.prop .badge{align-self:flex-start;font-family:var(--mono);font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--sun);color:var(--on-sun)}
+.prop p,.prop li{font-size:.92rem;color:var(--muted)}
+.prop ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px}
+.prop b{color:var(--ink)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;background:var(--violet-soft)}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:640px){
+.tbl{border:0;background:transparent;overflow:visible}
+.tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+.tbl tr.h{display:none}
+.tbl tr{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 0;margin-bottom:8px}
+.tbl td{border:0;padding:4px 12px}
+.tbl td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--violet)}
+.tbl td:first-child{font-weight:700;font-size:.95rem}
+.tbl td:first-child::before{display:none}
+td.n{white-space:normal}
+}
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.8rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+
+/* acceso */
+.gate{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:18px;padding-block:40px;max-width:520px}
+.gate h1{font-size:clamp(1.8rem,5vw,2.4rem)}
+.gate form{display:flex;flex-direction:column;gap:10px}
+.gate label{font-weight:600;font-size:.92rem}
+.gate input[type=email]{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:12px;width:100%}
+.gate input[type=email]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(120,74,247,.3)}
+.btn:disabled{opacity:.6;cursor:wait}
+.err{color:var(--warn);font-size:.88rem}
+.small{font-size:.85rem;color:var(--muted)}
+.linkbtn{background:none;border:0;color:var(--violet);font:inherit;font-size:.85rem;cursor:pointer;padding:0;text-decoration:underline}
+.userbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.loading{padding:60px 0;color:var(--muted);font-family:var(--mono);font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="v-loading" class="loading">Cargando…</section>
+
+<section id="v-login" class="gate" hidden>
+<div class="pair"><span class="logo" aria-label="luma legal"><span class="bars" aria-hidden="true"><i style="height:11px"></i><i class="v" style="height:24px"></i><i style="height:14px"></i><i style="height:19px"></i><i class="v" style="height:9px"></i></span><span class="word">luma<span>legal</span></span></span><span class="x">×</span><span class="p">Centinela</span></div>
+<span class="eyebrow">Investor Ready · Fase 1</span>
+<h1>Entra con tu correo <em>y seguimos.</em></h1>
+<p class="lead">Te enviamos un enlace para entrar, sin contraseñas. Solo funciona con los correos que Luma autorizó para este expediente.</p>
+<form id="login-form" novalidate>
+<label for="email">Tu correo</label>
+<input id="email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@empresa.com" required>
+<button class="btn" id="login-btn" type="submit">Enviarme el enlace</button>
+<span class="err" id="login-err" hidden></span>
+</form>
+<p class="small">Confidencial · Luma Legal S.A.S.</p>
+</section>
+
+<section id="v-sent" class="gate" hidden>
+<div class="pair"><span class="logo" aria-label="luma legal"><span class="bars" aria-hidden="true"><i style="height:11px"></i><i class="v" style="height:24px"></i><i style="height:14px"></i><i style="height:19px"></i><i class="v" style="height:9px"></i></span><span class="word">luma<span>legal</span></span></span><span class="x">×</span><span class="p">Centinela</span></div>
+<h1>Revisa tu correo 📬</h1>
+<p class="lead">Enviamos un enlace a <b id="sent-to"></b>. Ábrelo en este mismo navegador para entrar. Si no llega en un par de minutos, revisa la carpeta de spam.</p>
+<p><button class="linkbtn" id="again" type="button">Usar otro correo</button></p>
+</section>
+
+<section id="v-denied" class="gate" hidden>
+<div class="pair"><span class="logo" aria-label="luma legal"><span class="bars" aria-hidden="true"><i style="height:11px"></i><i class="v" style="height:24px"></i><i style="height:14px"></i><i style="height:19px"></i><i class="v" style="height:9px"></i></span><span class="word">luma<span>legal</span></span></span><span class="x">×</span><span class="p">Centinela</span></div>
+<h1>Este correo no tiene acceso</h1>
+<p class="lead">Entraste como <b id="denied-email"></b>, pero no está en la lista de este expediente. Escríbele a Luma para que lo agregue, o entra con otro correo.</p>
+<p><button class="btn ghost" type="button" data-logout>Entrar con otro correo</button></p>
+</section>
+
+<div id="v-app" hidden>
+<header class="hero">
+<div class="pair"><span class="logo" aria-label="luma legal"><span class="bars" aria-hidden="true"><i style="height:11px"></i><i class="v" style="height:24px"></i><i style="height:14px"></i><i style="height:19px"></i><i class="v" style="height:9px"></i></span><span class="word">luma<span>legal</span></span></span><span class="x">×</span><span class="p">Centinela</span></div>
+<span class="eyebrow">Investor Ready · Cierre del diagnóstico · Fase 1</span>
+<h1><span id="total">22</span> preguntas y documentos <em>para Centinela.</em></h1>
+<p class="lead">¡Hola, equipo Centinela! 👋 Con estas respuestas <b>cerramos el diagnóstico de la Fase 1</b> y dejamos los documentos listos para firmar. Respondan en el orden que quieran y vuelvan cuando tengan el dato: todo se guarda solito y Luma lo ve al instante.</p>
+<div class="meta"><span class="tag">Expediente LL-2026-0824-CEN</span><span class="tag">Lo responde: Cristian</span><span class="tag">Confidencial</span></div>
+<div class="howto">
+<h3>Así de fácil 🚀</h3>
+<ol>
+<li>Escribe tu respuesta debajo de cada pregunta. Si es un documento, dale a <b>Adjuntar archivo</b> y súbelo desde el celu o el computador (PDF, Word, Excel, fotos… hasta 50 MB cada uno).</li>
+<li>Marca cada ítem como <b>Listo</b>, <b>A medias</b> o déjalo en <b>Pendiente</b>.</li>
+<li>¿No tienes algo a la mano? Tranqui: escribe lo que sepas y lo completamos juntos en la sesión.</li>
+</ol>
+</div>
+<div class="userbar"><span>Entraste como <b id="who"></b></span><button class="linkbtn" type="button" data-logout>Salir</button><button class="linkbtn" type="button" id="export">Descargar respuestas (.txt)</button></div>
+</header>
+<div class="bar"><div class="bar-in">
+<div class="meter" role="img" id="meter" aria-label="Progreso"><i class="done" id="m-done"></i><i class="part" id="m-part"></i></div>
+<span class="count" id="count"></span>
+<span class="sync" id="sync">Conectando…</span>
+</div></div>
+<main id="list"></main>
+<footer>
+<span>¿Dudas? Nos escribes y lo resolvemos juntos. 💜 Equipo Luma</span>
+<span>Luma Legal S.A.S. · Expediente LL-2026-0824-CEN · 14 de octubre de 2026</span>
+<span>Revisó: Johana Patricia Buitrago Naranjo, abogada, T.P. 243.756 del C.S. de la J.</span>
+</footer>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
