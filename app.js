@@ -4,7 +4,7 @@
   var CFG = window.CENTINELA_CONFIG || {};
   var $ = function (x) { return document.getElementById(x); };
   var sb = window.supabase.createClient(CFG.url, CFG.anonKey, {
-    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'pkce' }
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'implicit' }
   });
 
   var Q = [], state = {}, me = null, ask = '', timers = {}, chains = {}, list = $('list'), order = [], built = false;
